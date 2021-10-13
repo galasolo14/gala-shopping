@@ -1,0 +1,14 @@
+<div>
+    <h2 mat-dialog-title> Choose {{data.name}} quantity:</h2>
+    <mat-form-field>
+        <mat-label>Enter quantity {{data.option}}</mat-label>
+        <input type="number" matInput [(ngModel)]="data.quantity">
+    </mat-form-field>
+    <mat-dialog-actions>
+        <button mat-button mat-dialog-close mat-dialog-close="cancel">Cancel</button>
+        <button mat-button mat-dialog-close [mat-dialog-close]="data.quantity">Add product</button>
+    </mat-dialog-actions>
+</div>
+
+
+

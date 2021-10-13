@@ -1,0 +1,28 @@
+
+<app-toolbar  [userName]="user"></app-toolbar>
+<div class="cart">
+    <app-cart 
+    [userData]="user" 
+    (orderinfo)="moveToOrder($event)" 
+    [productForEdit]="productEdit" 
+    [needToUpdate]="shouldUpdateCart" 
+    [backShopping]="showShop">
+    </app-cart>
+</div>
+<div class="shop">
+    <div *ngIf="showShop">
+        <h1>Shop</h1>
+        <mat-chip-list class="categories" >
+            <mat-chip color="primary"  *ngFor="let category of categories" (click)="onClick(category._id)" > {{category.name}}</mat-chip>
+        </mat-chip-list>
+        <app-products 
+        *ngIf="showProductes" 
+        [allProductes]="products" 
+        [userType]="user.isAdmin" 
+        (toEdit)="productToEdit($event)" 
+        (updateCart)="refreshCart($event)">
+        </app-products>
+    </div>
+    <app-order *ngIf="showOrder" (backToshop)="moveToShop($event)" [userdetails]="user" [cartIdAndPrice]="dataOrder"></app-order>
+</div>
+

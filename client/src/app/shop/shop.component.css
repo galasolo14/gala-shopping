@@ -1,0 +1,27 @@
+.categories{
+    padding-left: 20%;
+    display: block;
+}
+
+.example-container {
+    height: 200px;
+    margin: 10px;
+}
+
+.cart{
+    background-color: rgb(240, 236, 243);
+    width: 25%;
+    float: left;
+    text-align: center;
+    height: 100vh;
+}
+
+.shop{
+    background-color: rgb(194, 235, 248);
+    width: 75%;
+    float: left;
+    text-align: center;
+    height: 100vh;
+}
+
+

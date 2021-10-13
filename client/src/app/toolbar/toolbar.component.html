@@ -1,0 +1,9 @@
+<p>
+    <mat-toolbar color="primary">
+    <span *ngIf="!userIn">Hello guest</span>
+    <span *ngIf="userIn">Hello {{name}}</span>
+      <span class="header">Welcome to GALA Shopping Site</span>
+      <span class="example-spacer"></span>
+      <button *ngIf="userIn" mat-raised-button color="warn" (click)="onClickLogout()" >Logout</button>
+    </mat-toolbar>
+</p>

@@ -1,0 +1,16 @@
+<mat-list role="list" *ngIf="showItems">
+    <mat-list-item role="listitem" *ngFor="let item of cartItems; index as idx"  > 
+        <div class="example-button-container" *ngIf="!orderMode">
+            <button mat-mini-fab color="warn" aria-label="Example icon button with a delete icon" (click)="onClick(idx)">
+              <mat-icon >delete</mat-icon>
+            </button>
+        </div>
+        &nbsp;
+        {{item.product_id.name}} &nbsp;
+        {{item.quantity}} &nbsp;
+        {{item.product_id.priceOption}}<span *ngIf="item.quantity>1">s </span>&nbsp;   
+        ${{item.item_price}}
+        <img src="{{item.product_id.picture}}">
+    </mat-list-item>
+</mat-list>
+

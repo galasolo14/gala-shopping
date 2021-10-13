@@ -1,0 +1,21 @@
+.center{
+    text-align: center;
+}
+
+.firstStep{
+    float: left;
+    width: 50%;
+}
+
+.secondStep{
+    float: left;
+    width: 50%;
+}
+
+/* input{
+    padding-top: 10px;
+} */
+
+.full-width{
+    width: 20%;
+}

@@ -1,0 +1,100 @@
+<h1>Order</h1>
+<div>
+    <button mat-raised-button color="primary" (click)="goToShop()" class="orderButton" *ngIf="!newOrder">Go Back To Shop</button>
+</div>
+
+<div class="shippingDiv" *ngIf="!pdf">
+    Shipping Details:
+    <form name="orderForm" [formGroup]="orderForm">
+        <div>
+            
+            <mat-form-field class="full-width">
+                <mat-label>City</mat-label>
+                <input formControlName="city" matInput required type="text" (dblclick)="autoFill($event, 'city')" [(ngModel)]='orderForm.value.city'>
+                <mat-hint > Double click to fill in your city from signup</mat-hint>
+            </mat-form-field>
+
+        </div>
+       
+        <div>
+            <mat-form-field class="full-width">
+                <mat-label>Street</mat-label>
+                <input formControlName="street" matInput required type="text" (dblclick)="autoFill($event, 'street')" [(ngModel)]="orderForm.value.street">
+                <mat-hint > Double click to fill in your street from signup</mat-hint>
+            </mat-form-field>
+
+        </div>
+
+        
+        <div>
+            <mat-form-field class="full-width">
+                <mat-label>Shippong Date</mat-label>
+                <input formControlName="shippingDate" matInput required type="date" (change)="onChange($event, 'shippingDate')">
+            </mat-form-field>
+
+        </div>
+        
+
+        <div>
+            Payments Details:
+            <br/>
+            <mat-form-field class="full-width">
+                <mat-label>Credit Card</mat-label>
+                <input formControlName="creditCard" matInput required />
+                <mat-hint >16 numbers no space</mat-hint>
+            </mat-form-field>
+        </div>
+        
+        <br/>
+        <button mat-raised-button color="primary" (click)="sbmitOrder()" [disabled]="orderForm.invalid">Order</button>
+
+    </form>
+    
+</div>
+
+
+
+<div *ngIf="pdf">
+    <h2 class="orderDone">Order successfully completed</h2>
+    <button mat-raised-button color="primary" (click)="createPdf()" >Download PDF & Start New Order</button>
+    <br/>
+    <button mat-raised-button color="primary" (click)="startNeworder()" >Start New Order</button>
+</div>
+
+
+
+
+<!-- <div class="shippingDiv" *ngIf="!pdf">
+    Shipping Details:
+    <br/>
+    <mat-form-field class="example-full-width">
+        <mat-label>City</mat-label>
+        <input matInput required type="text" [formControl]="city" (keyup)="onChange($event, 'city')" (dblclick)="autoFill($event, 'city')" [(ngModel)]="order.city">
+        <mat-hint > Double click to fill in your city from signup</mat-hint>
+    </mat-form-field>
+    <br/>
+    <br/>
+    <mat-form-field class="example-full-width">
+        <mat-label>Street</mat-label>
+        <input matInput required type="text" [formControl]="street" (keyup)="onChange($event, 'street')" (dblclick)="autoFill($event, 'street')" [(ngModel)]="order.street">
+        <mat-hint > Double click to fill in your street from signup</mat-hint>
+    </mat-form-field>
+    <br/>
+    <br/>
+    <mat-form-field class="example-full-width">
+        <mat-label>Shippong Date</mat-label>
+        <input matInput required type="date" [formControl]="shippingDate" (change)="onChange($event, 'shippingDate')">
+    </mat-form-field>
+    <br/>
+    Payments:
+    <br/>
+    <mat-form-field class="example-full-width">
+        <mat-label>Credit Card</mat-label>
+        <input matInput required type="number" [formControl]="creditCard" (keyup)="onChange($event, 'creditCard')">
+        <mat-hint > 16 numbers no space</mat-hint>
+    </mat-form-field>
+    <br/>
+    <br/>
+    <button mat-raised-button color="primary" (click)="sbmitOrder()" >Order</button>
+</div> -->
+

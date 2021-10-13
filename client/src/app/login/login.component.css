@@ -1,0 +1,21 @@
+.loingDiv{
+    width: 33%;
+    float: left;
+    text-align: center;
+    padding-top: 20px;
+}
+.yellow{
+    color: darkorange;
+}
+
+.siteInfoText{
+    color: rgb(19, 87, 233);
+}
+
+.shoppingImg{
+    width: 70%;
+}
+
+.full-width{
+    width: 60%;
+}

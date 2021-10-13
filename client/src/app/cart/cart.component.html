@@ -1,0 +1,19 @@
+<div *ngIf="userName">
+    <div *ngIf="!admin">
+        <h1>{{userName}}'s Cart</h1>
+        <app-item  [cartItems]="items" [finishOrder]="orderMode" (refreshCartItems)="getItems()"></app-item>
+    </div>
+    <div *ngIf="admin">
+        <h1>{{userName}} Admin</h1>
+        <app-add-product [editProduct]="productForSend"></app-add-product>
+
+    </div>
+    <br/>
+    <div *ngIf="orderMode" class="red"> NO CHANGES PERMITTED HERE!</div>
+    <br/>
+    <div *ngIf="!admin && items.length > 0" > 
+        Total Order: $ {{total}}
+        <button mat-raised-button color="primary" (click)="order(cartId, total)" class="orderButton" *ngIf="!orderMode">Order</button>
+    </div>
+</div>
+

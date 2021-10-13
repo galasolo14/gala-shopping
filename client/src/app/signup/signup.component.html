@@ -1,0 +1,140 @@
+<app-toolbar></app-toolbar>
+<div class="center">
+    <h1>Sign UP Here</h1>
+    <form (ngSubmit)="clickOnSignup()" name="signupForm" [formGroup]="signupForm">
+        <div>
+            <mat-form-field class="full-width" >
+                <mat-label>First Name</mat-label>
+                <input formControlName="firstName" matInput required />
+                <mat-error  *ngIf="firstName.invalid || firstName.hasError('required')">First Name is invalid! *Mantatory field</mat-error>
+                <mat-error  *ngIf="firstName.hasError('minlength')">Min length 2 Letters</mat-error>
+                <mat-error  *ngIf="firstName.hasError('pattern') ">Letters only</mat-error>
+            </mat-form-field>
+        </div>
+        <br/>
+        <div>
+            <mat-form-field class="full-width">
+                <mat-label>Last Name</mat-label>
+                <input formControlName="lastName" matInput required />
+                <mat-error  *ngIf="lastName.invalid || lastName.hasError('required')">First Name is invalid! *Mantatory field</mat-error>
+                <mat-error  *ngIf="lastName.hasError('minlength')">Min length 2 Letters</mat-error>
+                <mat-error  *ngIf="lastName.hasError('pattern') ">Letters only</mat-error>
+            </mat-form-field>
+        </div>
+        <br/>
+        <div>
+            <mat-form-field class="full-width">
+                <mat-label>City</mat-label>
+                <mat-select formControlName="city" [(value)]="user.city" >
+                  <mat-option value="Tel-Aviv">Tel-Aviv</mat-option>
+                  <mat-option value="Ramat Gan">Ramat Gan</mat-option>
+                  <mat-option value="Jerusalem">Jerusalem</mat-option>
+                  <mat-option value="Haifa">Haifa</mat-option>
+                  <mat-option value="Rishon Lezion">Rishon Lezion</mat-option>
+                  <mat-option value="Petah Tikva">Petah Tikva</mat-option>
+                  <mat-option value="Ashdod">Ashdod</mat-option>
+                  <mat-option value="Netanya">Netanya</mat-option>
+                  <mat-option value="Beer Sheva">Beer Sheva</mat-option>
+                  <mat-option value="Bnei Brak">Bnei Brak</mat-option>
+                </mat-select>
+                <mat-error *ngIf="signupForm.get('city').errors?.required">Requried city</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field class="full-width">
+                <mat-label>Street</mat-label>
+                <input formControlName="street" matInput required/>
+                <!-- <mat-error *ngIf="signupForm.get('street').errors?.required" >Requried Street Name</mat-error> -->
+                <mat-error  *ngIf="street.hasError('required')">Street Name is requried!</mat-error>
+                <mat-error  *ngIf="street.hasError('minlength') ">Street Name is invalid! *Min length 2 characters</mat-error>
+            </mat-form-field>
+        </div>
+        
+        <div>
+            <mat-form-field class="full-width">
+                <mat-label>Email</mat-label>
+                <input formControlName="email" matInput required placeholder="name@gmail.com" />
+                <!-- <mat-error *ngIf="signupForm.get('email').errors?.required">Requried valid email address</mat-error> -->
+                <mat-error  *ngIf="email.hasError('required')">Email address is requried!</mat-error>
+                <mat-error  *ngIf="email.hasError('email') ">Email address is invalid!</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field class="full-width" >
+                <mat-label>Password</mat-label>
+                <input formControlName="password" matInput required [type]="hide ? 'password': 'text'" />
+                <button mat-icon-button matSuffix (click)="hide = !hide"
+                    [attr.aria-label]="'Hide Password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{ hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <mat-hint> Requried 1 letter, 1 number & min 4 characters </mat-hint>
+                <!-- <mat-error *ngIf="signupForm.get('password').errors?.required">Requried Password</mat-error> -->
+                <!-- <mat-error  *ngIf="password.hasError('required')">Password is requried!</mat-error> -->
+                <mat-error  *ngIf="password.invalid || password.hasError('required')">Password is invalid! *Mantatory field</mat-error>
+                <mat-error  *ngIf="password.hasError('minlength')">Min length 4 characters</mat-error>
+                <mat-error  *ngIf="password.hasError('pattern') ">Requried 1 letter, 1 number</mat-error>
+            </mat-form-field>
+        </div>
+
+        <br/>
+        <br/>
+
+        <button mat-raised-button color="primary" [disabled]="signupForm.invalid">SignUp</button>
+
+    </form>
+
+    <!-- <mat-form-field class="example-full-width">
+        <mat-label>First Name</mat-label>
+        <input matInput required type="text" [formControl]="firstName" (keyup)="onChange($event, 'firstName')">
+        <mat-error *ngIf="firstName.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+    <br/> -->
+    <!-- <mat-form-field class="example-full-width">
+        <mat-label>Last Name</mat-label>
+        <input matInput required type="text" [formControl]="lastName" (keyup)="onChange($event, 'lastName')">
+        <mat-error *ngIf="lastName.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+    <br/>
+    <mat-form-field >
+        <mat-label>City</mat-label>
+        <mat-select [(value)]="user.city" [formControl]="city">
+          <mat-option value="Tel-Aviv">Tel-Aviv</mat-option>
+          <mat-option value="Ramat Gan">Ramat Gan</mat-option>
+          <mat-option value="Jerusalem">Jerusalem</mat-option>
+          <mat-option value="Haifa">Haifa</mat-option>
+          <mat-option value="Rishon Lezion">Rishon Lezion</mat-option>
+          <mat-option value="Petah Tikva">Petah Tikva</mat-option>
+          <mat-option value="Ashdod">Ashdod</mat-option>
+          <mat-option value="Netanya">Netanya</mat-option>
+          <mat-option value="Beer Sheva">Beer Sheva</mat-option>
+          <mat-option value="Bnei Brak">Bnei Brak</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <br/>
+    <mat-form-field class="example-full-width">
+        <mat-label>Street</mat-label>
+        <input matInput required type="text" [formControl]="street" (keyup)="onChange($event, 'street')">
+        <mat-error *ngIf="street.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+    <br/>
+    <div>
+        <mat-form-field class="example-full-width">
+            <mat-label>Email</mat-label>
+            <input matInput required [formControl]="email" placeholder="aaa@gmail.com" type="email" (keyup)="onChange($event, 'email')" >
+            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+    </div>
+    <br/> -->
+    <!-- <mat-form-field class="example-full-width">
+        <mat-label>Password</mat-label>
+        <input matInput required type="text" [formControl]="password" (keyup)="onChange($event, 'password')" >
+        <mat-hint align="end"> Min 4 characters</mat-hint>
+        <mat-error *ngIf="password.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field> -->
+    <br/>
+    <!-- <button mat-raised-button color="primary" (click)="clickOnSignup()">SignUp</button> -->
+    <!-- <br/> -->
+    <button mat-raised-button color="link" (click)="onClickLogin()">Move to Login</button>
+</div>

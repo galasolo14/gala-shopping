@@ -1,0 +1,16 @@
+.orderButton{
+    float: left;
+}
+
+.shippingDiv{
+padding-top: 50px;
+}
+
+.orderDone{
+    color: rgb(7, 190, 7);
+}
+
+.full-width{
+    width: 30%;
+    margin-top: 20px;
+}
